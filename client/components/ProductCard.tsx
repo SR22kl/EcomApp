@@ -4,22 +4,30 @@ import { ProductCardProps } from "@/constants/types";
 import { Link } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "@/constants";
+import { useWishlist } from "@/context/WishListContext";
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const isLiked = false;
+  const { toggleWishlist, isInWishlist, loading } = useWishlist();
+  const isLiked = isInWishlist(product._id);
   return (
     <>
       <Link href={`/product/${product._id}`} asChild>
         <TouchableOpacity className="w-[48%] mb-4 bg-white rounded-lg overflow-hidden">
           <View className=" relative h-56 w-full bg-gray-100">
             <Image
-              source={{ uri: product.images[0] }}
+              source={{ uri: product.images?.[0] ?? "" }}
               className="w-full h-full"
               resizeMode="cover"
             />
 
             {/* favorite icon */}
-            <TouchableOpacity className="absolute top-2 right-2 bg-white rounded-full p-2">
+            <TouchableOpacity
+              className="absolute top-2 right-2 bg-white rounded-full p-2 shadow-md"
+              onPress={(e) => {
+                e.stopPropagation();
+                toggleWishlist(product);
+              }}
+            >
               <Ionicons
                 name={isLiked ? "heart" : "heart-outline"}
                 size={20}
@@ -49,12 +57,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
               {product.name}
             </Text>
             <View className="flex-row items-center">
-              <Text className="text-base font-bold text-primary">${product.price.toFixed(2)}</Text>
+              <Text className="text-base font-bold text-primary">
+                ${product.price.toFixed(2)}
+              </Text>
             </View>
           </View>
         </TouchableOpacity>
       </Link>
-      ;
     </>
   );
 };
