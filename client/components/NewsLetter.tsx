@@ -5,7 +5,8 @@ const Newsletter = () => {
   const [email, setEmail] = useState("");
 
   const handleSubscribe = () => {
-    if (!email.includes("@")) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
       Alert.alert("Invalid Email", "Please enter a valid email address");
       return;
     }
@@ -40,7 +41,9 @@ const Newsletter = () => {
         onPress={handleSubscribe}
         className="mt-4 bg-primary py-3 rounded-full items-center"
       >
-        <Text className="text-white font-semibold text-base">Subscribe Now!</Text>
+        <Text className="text-white font-semibold text-base">
+          Subscribe Now!
+        </Text>
       </TouchableOpacity>
     </View>
   );
