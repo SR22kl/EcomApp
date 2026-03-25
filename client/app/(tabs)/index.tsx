@@ -1,7 +1,7 @@
 import { BANNERS, dummyProducts } from "@/assets/assets";
 import Header from "@/components/Header";
 import BannerSlider from "@/components/BannerSlider";
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   ScrollView,
@@ -76,7 +76,7 @@ const Home = () => {
             <ActivityIndicator size={"large"} />
           ) : (
             <View className="flex-row justify-between flex-wrap">
-              {products.slice(0, 4).map((product: any) => (
+              {products.slice(0, 8).map((product: any) => (
                 <ProductCard key={product._id} product={product} />
               ))}
             </View>
@@ -85,7 +85,6 @@ const Home = () => {
 
         {/* NewsLetter CTA  */}
         <Newsletter />
-        
       </ScrollView>
     </SafeAreaView>
   );
