@@ -3,6 +3,7 @@ import "@/global.css";
 import { CartProvider } from "@/context/CartContext";
 import { WishListProvider } from "@/context/WishListContext";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import Toast from "react-native-toast-message";
 
 export default function RootLayout() {
   return (
@@ -15,6 +16,7 @@ export default function RootLayout() {
                 headerShown: false,
               }}
             />
+            <Toast position="top" />
           </WishListProvider>
         </CartProvider>
       </GestureHandlerRootView>
