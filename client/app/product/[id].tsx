@@ -29,13 +29,14 @@ const ProductDetails = () => {
   const { addToCart, cartItems, itemCount } = useCart();
 
   const fetchProduct = async () => {
-    setProduct(dummyProducts.find((p) => p._id === id) as Product);
+    const found: any = dummyProducts.find((prouduct) => prouduct._id === id);
+    setProduct(found ?? null);
     setLoading(false);
   };
 
   useEffect(() => {
     fetchProduct();
-  }, []);
+  }, [id]);
 
   if (loading) {
     return (

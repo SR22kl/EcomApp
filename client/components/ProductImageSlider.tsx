@@ -19,10 +19,12 @@ const ProductImageSlider = ({ images }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  
+
   // Start auto scroll
   const startAutoScroll = () => {
     stopAutoScroll();
+
+    if (images.length <= 1) return;
 
     intervalRef.current = setInterval(() => {
       let nextIndex = (activeIndex + 1) % images.length;

@@ -67,7 +67,7 @@ const Home = () => {
         <View className="mb-8">
           <View className="flex-row justify-between items-center mb-4">
             <Text className="text-xl font-bold text-primary">Popular</Text>
-            <TouchableOpacity onPress={() => router.push("/")}>
+            <TouchableOpacity onPress={() => router.push("/shop")}>
               <Text className="text-sm text-secondary">See All</Text>
             </TouchableOpacity>
           </View>
@@ -76,7 +76,7 @@ const Home = () => {
             <ActivityIndicator size={"large"} />
           ) : (
             <View className="flex-row justify-between flex-wrap">
-              {products.slice(0, 8).map((product: any) => (
+              {products.slice(0, 4).map((product: any) => (
                 <ProductCard key={product._id} product={product} />
               ))}
             </View>
