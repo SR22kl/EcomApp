@@ -11,7 +11,7 @@ const CartItem = ({ item, onRemove, onUpdateQuantity }: CartItemProps) => {
   return (
     <View className="bg-white rounded-xl p-3 mb-4 shadow-sm border border-gray-100 flex-row">
       {/* Product Image */}
-      <View className="w-24 h-32 rounded-lg bg-gray-100 overflow-hidden mr-3">
+      <View className="w-24 h-36 rounded-lg bg-gray-100 overflow-hidden mr-3">
         <Image
           source={{ uri: imageUrl || "https://via.placeholder.com/150" }}
           className="w-full h-full"
